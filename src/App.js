@@ -1,12 +1,30 @@
-import React, { useState } from 'react'
+import React from 'react'
+import Navbar from './components/Navbar'
+import Product from './components/Product'
+import Cart from './components/Cart'
+import { StoreProvider } from './context/StoreContext'
+import{BrowserRouter,Router,Routes,Route} from 'react-router-dom'
 
 const App = () => {
-  const[isLoggedIn, setLoggedIn]= useState(false)
-  const user = "Vaishnavi"
   return (
     <div>
-      <p>{isLoggedIn? `Welcome  ${user}`: "Please Login"}</p>
-      <button onClick={()=> setLoggedIn(prev=> !prev)}>{isLoggedIn? "Logout": "Login"}</button>
+
+      <StoreProvider>
+        
+      
+      
+    
+
+      <Router>
+        <Navbar />
+          <Product />
+        <Routes>
+          <Route path='/cart' element= { <Cart />}/>
+
+          
+        </Routes>
+      </Router>
+        </StoreProvider>
     </div>
   )
 }
