@@ -1,7 +1,7 @@
 import { createContext, useReducer } from "react";
 
 // Store Creation
-const StoreContext = createContext()
+export const StoreContext = createContext()
 
 const initialState = {
     cart: []
@@ -31,7 +31,7 @@ function reducer(state, action) {
         case "remove_cart":
             return{
                 ...state,
-                cart: state.cart.fillter((item)=>item.id !==action.id)
+                cart: state.cart.filter((item)=>item.id !==action.id)
             }
 
         case "increase_qty":
@@ -41,6 +41,17 @@ function reducer(state, action) {
                  {...item,qty : item.qty+1}
                    : item)
             }
+        case "decrease_qty":
+            return{
+                ...state, 
+                cart: state.cart.map((item)=> item.id===action.id && item.qty>1?
+            {...item,qty: item.qty-1}
+            :item)
+            }
+
+
+        default : 
+        return state;
     }
 }
 

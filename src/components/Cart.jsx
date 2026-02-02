@@ -16,8 +16,8 @@ const Cart = () => {
             <div key={item.id}>
               {item.name} - {item.qty} x ₹{item.price} = ₹
               {item.qty * item.price}
-              <button >+</button>
-              <button onClick={()=> dispatch({type : "increase_qty", id: item.id})} >-</button>
+              <button onClick={()=>dispatch({type:"decrease_qty",id:item.id})}>-</button>
+              <button onClick={()=> dispatch({type : "increase_qty", id: item.id})} >+</button>
               <button onClick={() => dispatch({ type: "remove_cart", id: item.id })}>❌ Remove</button>
             </div>
           ))}

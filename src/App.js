@@ -3,29 +3,21 @@ import Navbar from './components/Navbar'
 import Product from './components/Product'
 import Cart from './components/Cart'
 import { StoreProvider } from './context/StoreContext'
-import{BrowserRouter,Router,Routes,Route} from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 const App = () => {
   return (
-    <div>
-
-      <StoreProvider>
-        
-      
-      
-    
-
-      <Router>
+    <StoreProvider>
+      <BrowserRouter>
         <Navbar />
-          <Product />
-        <Routes>
-          <Route path='/cart' element= { <Cart />}/>
 
-          
+        <Routes>
+          <Route path="/" element={<Product />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
-      </Router>
-        </StoreProvider>
-    </div>
+
+      </BrowserRouter>
+    </StoreProvider>
   )
 }
 
